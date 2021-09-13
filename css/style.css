@@ -7,6 +7,18 @@
 
 body{
   font-family: 'Rubik', sans-serif; 
+  text-transform: capitalize;
+}
+
+/* common */
+.btn{
+  padding: 7px 20px;
+  background-color: rgb(41, 177, 221);
+  color: #fff;
+  border: 1px solid rgb(41, 177, 221); 
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px #3f3f3f;
+  cursor: pointer;
 }
 
 .logo{
@@ -24,10 +36,19 @@ body{
   text-align: center;
   color: #fff
 }
+.categories{
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+main{
+display: flex;
+}
+
 .main-content{
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  flex-grow: 1;
   background-color: #ddd;
   height: calc(100vh - 140px);
 }
@@ -40,4 +61,14 @@ body{
   background-color: #fff;
   box-shadow: 3px 3px 8px #3f3f3f;
   text-align: center;
+}
+
+.form-inputs{
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.form-inputs > input{
+  margin-bottom: 10px;
 }

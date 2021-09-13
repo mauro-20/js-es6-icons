@@ -14,7 +14,7 @@
  */
 const printCards = (icons) => {
   //reset iniziale
-  mainContent.innerHTML = ''
+  mainContent.innerHTML = '';
 
   icons.forEach(
     (icon) => {
@@ -32,6 +32,19 @@ const printCards = (icons) => {
   );
 };
 
+/**
+ * aggiungo la proprietà colore alle icone
+ */
+const colorIcons = (icons, colors) => {
+  return icons.map(
+    (icon) => {
+      return {
+        ...icon,
+        'color': colors[icon.category]
+      };
+    }
+  );
+};
 
 /**
  * Variables
@@ -155,25 +168,24 @@ const colors = {
 };
 
 const mainContent = document.getElementById('main-content');
+const btnLoad = document.getElementById('btn-load');
+const categoriesSelect = document.getElementById('categories');
+const categories = [];
+const formName = document.getElementById('name');
+const formFamily = document.getElementById('family');
+const formPrefix = document.getElementById('prefix');
+const formCategory = document.getElementById('category');
+let coloredIcons = [];
 
 /**
  * Main program
  */
 
-// aggiungo il colore delle icone tramite l'oggetto colors
-const coloredIcons = icons.map(
-  (icon) => {
-    return {
-      ...icon,
-      'color': colors[icon.category]
-    };
-  }
-);
-
+// coloro le icone
+coloredIcons = colorIcons(icons, colors);
 
 // aggiungo le options alla select in base alle categorie
 //    estraggo le categorie dall'array
-const categories = [];
 coloredIcons.forEach(
   (icon) => {
     if (!categories.includes(icon.category)) {
@@ -181,19 +193,20 @@ coloredIcons.forEach(
     }
   }
 );
-console.log(categories);
 
 //    creo le options
-const categoriesSelect = document.getElementById('categories');
 categories.forEach(
   (category) => {
     categoriesSelect.innerHTML += `<option value="${category}">${category}</option>`;
   }
 );
 
-
 // stampo a video le cards
 printCards(coloredIcons);
+
+/**
+ * Events
+ */
 
 // al change della select filtro per categorie
 categoriesSelect.addEventListener('change',
@@ -209,5 +222,21 @@ categoriesSelect.addEventListener('change',
 
     // stampo a video le cards filtrate
     printCards(filteredIcons);
+  }
+);
+
+// al click del bottone Load
+btnLoad.addEventListener('click',
+  () => {
+    icons.push(
+      {
+        'name': formName.value,
+        'family': formFamily.value,
+        'prefix': formPrefix.value,
+        'category': formCategory.value
+      }
+    );
+    coloredIcons = colorIcons(icons, colors);
+    printCards(coloredIcons);
   }
 );

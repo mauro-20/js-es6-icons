@@ -22,14 +22,34 @@
       <h1 class="logo">FontIcons</h1>
       <div class="search">
         FILTRA PER TIPO
-        <select name="categories" id="categories">
+        <select name="categories" id="categories" class="categories">
           <option value="">All</option>
         </select>
       </div>
     </header>
 
     <main>
+      <!-- input form -->
+      <div class="form-inputs">
+
+        <label for="name">name</label>
+        <input id="name" type="text">
+
+        <label for="family">family</label>
+        <input id="family" type="text">
+
+        <label for="prefix">prefix</label>
+        <input id="prefix" type="text">
+
+        <label for="category">category</label>
+        <input id="category" type="text">
+
+        <button id="btn-load" class="btn">Load</button>
+      </div>
+      <!-- /input form -->
+      <!-- main content -->
       <div id="main-content" class="main-content"></div>
+      <!-- /main content -->
     </main>
 
     <script src="./js/main.js"></script>

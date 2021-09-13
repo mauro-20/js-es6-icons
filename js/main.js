@@ -1,5 +1,9 @@
 // Milestone 1
 // Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
+// Milestone 2
+// Coloriamo le icone per tipo
+// Milestone 3
+// Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
 const icons = [
   {
@@ -18,7 +22,7 @@ const icons = [
     name: 'fish',
     family: 'fas',
     prefix: 'fa-',
-    category: "food"
+    category: "animal"
   },
   {
     name: 'lemon',
@@ -112,19 +116,36 @@ const icons = [
   },
 ];
 
+const colors = {
+  'food': 'green',
+  'beverage': 'blue',
+  'animal': 'brown'
+}
+
 const mainContent = document.getElementById('main-content')
 
-icons.forEach(
+const coloredIcons = icons.map(
   (icon) => {
-    const {name, family, prefix, category} = icon
+    return {
+      ...icon,
+      'color': colors[icon.category]
+    }
+  }
+)
+
+
+coloredIcons.forEach(
+  (icon) => {
+    const {name, family, prefix, color} = icon
 
     mainContent.innerHTML += `
       <div class="card">
-            <i class="${family} ${prefix}${name}"></i>
+            <i class="${family} ${prefix}${name}" style="color: ${color}"></i>
           <div class="card-text">
             <h4>${name}</h4>
           </div>
         </div>
     `
   }
-)
+);
+

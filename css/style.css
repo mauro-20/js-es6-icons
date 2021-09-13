@@ -24,7 +24,7 @@ body{
   text-align: center;
   color: #fff
 }
-#main-content{
+.main-content{
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;

@@ -228,6 +228,18 @@ categoriesSelect.addEventListener('change',
 // al click del bottone Load
 btnLoad.addEventListener('click',
   () => {
+    // controllo se la categoria è gia presente nel DB
+    let check = false
+    for (let key in colors) {
+      if (key == formCategory.value) {
+        check = true
+      }
+    }
+    // se non è presente aggiungo un nuovo colore
+    if (!check) {
+      colors[formCategory.value] = prompt(`Which color would you like for ${formCategory.value}`);
+    }
+
     icons.push(
       {
         'name': formName.value,
